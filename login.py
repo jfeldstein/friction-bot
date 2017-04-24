@@ -21,7 +21,8 @@ if __name__ == '__main__':
 
   credentials = flow.step2_exchange(auth_code)
 
-  print credentials
+  print "Credentials saved to `credentials.txt`."
+  print "Update the GSPREAD_CREDENTIALS env variable with that."
 
   storage = Storage('credentials.txt')
   storage.put(credentials)

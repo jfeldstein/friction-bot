@@ -8,7 +8,6 @@ import datetime
 import sys
 
 
-
 WB_NAME = '2017 - Rehearsal Schedule'
 SHEET_NAME = 'Rehearsal Schedule'
 
@@ -18,9 +17,10 @@ SCOPES = [
     'https://spreadsheets.google.com/feeds'
 ];
 
+
 def get_credentials():
-    return ServiceAccountCredentials.from_json_keyfile_name(
-        'client_secrets.json', SCOPES)
+    keyfileDict = json.loads(os.environ['GSPREAD_CREDENTIALS'])
+    return ServiceAccountCredentials.from_json_keyfile_dict(keyfileDict, SCOPES)
 
 
 def send_slack_message(text):
